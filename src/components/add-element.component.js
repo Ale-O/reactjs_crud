@@ -4,65 +4,75 @@ import ElementDataService from "../services/element.service";
 export default class CreateElement extends Component {
   constructor(props) {
     super(props);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeField4 = this.onChangeField4.bind(this);
-    this.onChangeField5 = this.onChangeField5.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeRank = this.onChangeRank.bind(this);
+    this.onChangeAvailability_date = this.onChangeAvailability_date.bind(this);
+    this.onChangeEnd_date = this.onChangeEnd_date.bind(this);
+    this.onChangeBudget_line = this.onChangeBudget_line.bind(this);
     this.saveElement = this.saveElement.bind(this);
     this.newElement = this.newElement.bind(this);
 
     this.state = {
       id: null,
-      title: "",
-      description: "", 
+      username: "",
+      rank: "", 
       published: false,
-      field4: "",
-      field5: "",
+      availability_date: "",
+      end_date: "",
+      budget_line: "",
 
       submitted: false
     };
   }
 
-  onChangeTitle(e) {
+  onChangeUsername(e) {
     this.setState({
-      title: e.target.value
+      username: e.target.value
     });
   }
 
-  onChangeDescription(e) {
+  onChangeRank(e) {
     this.setState({
-      description: e.target.value
+      rank: e.target.value
     });
   }
 
-  onChangeField4(e) {
+  onChangeAvailability_date(e) {
     this.setState({
-      field4: e.target.value
+      availability_date: e.target.value
     });
   }
 
-  onChangeField5(e) {
+  onChangeEnd_date(e) {
     this.setState({
-      field5: e.target.value
+      end_date: e.target.value
+    });
+  }
+
+  onChangeBudget_line(e) {
+    this.setState({
+      budget_line: e.target.value
     });
   }
 
   saveElement() {
     var data = {
-      title: this.state.title,
-      description: this.state.description,
-      field4: this.state.field4,
-      field5: this.state.field5
+      username: this.state.username,
+      rank: this.state.rank,
+      availability_date: this.state.availability_date,
+      end_date: this.state.end_date,
+      budget_line: this.state.budget_line
     };
 
     ElementDataService.create(data)
       .then(response => {
         this.setState({
           id: response.data.id,
-          title: response.data.title,
-          description: response.data.description,
-          field4: response.data.field4,
-          field5: response.data.field5,
+          username: response.data.username,
+          rank: response.data.rank,
+          availability_date: response.data.availability_date,
+          end_date: response.data.end_date,
+          budget_line: response.data.budget_line,
           published: response.data.published,
 
           submitted: true
@@ -77,10 +87,11 @@ export default class CreateElement extends Component {
   newElement() {
     this.setState({
       id: null,
-      title: "",
-      description: "",
-      field4: "",
-      field5: "",
+      username: "",
+      rank: "",
+      availability_date: "",
+      end_date: "",
+      budget_line: "",
       published: false,
 
       submitted: false
@@ -100,56 +111,69 @@ export default class CreateElement extends Component {
         ) : (
           <div className="jumbotron">
             <div className="form-group">
-              <label htmlFor="title">Title</label>
+              <label htmlFor="username">Username</label>
               <input
                 type="text"
                 className="form-control"
-                id="title"
+                id="username"
                 required
-                value={this.state.title}
-                onChange={this.onChangeTitle}
-                name="title"
+                value={this.state.username}
+                onChange={this.onChangeUsername}
+                name="username"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="rank">Rank</label>
               <input
                 type="text"
                 className="form-control"
-                id="description"
+                id="rank"
                 required
-                value={this.state.description}
-                onChange={this.onChangeDescription}
-                name="description"
+                value={this.state.rank}
+                onChange={this.onChangeRank}
+                name="rank"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="field4">Field4</label>
+              <label htmlFor="availability_date">Availability_date</label>
               <input
-                type="text"
+                type="date"
                 className="form-control"
-                id="field4"
+                id="availability_date"
                 required
-                value={this.state.field4}
-                onChange={this.onChangeField4}
-                name="field4"
+                value={this.state.availability_date}
+                onChange={this.onChangeAvailability_date}
+                name="availability_date"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="field5">Field5</label>
+              <label htmlFor="end_date">End_date</label>
+              <input
+                type="date"
+                className="form-control"
+                id="end_date"
+                required
+                value={this.state.end_date}
+                onChange={this.onChangeEnd_date}
+                name="end_date"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="budget_line">Budget_line</label>
               <input
                 type="text"
                 className="form-control"
-                id="field5"
+                id="budget_line"
                 required
-                value={this.state.field5}
-                onChange={this.onChangeField5}
-                name="field5"
+                value={this.state.budget_line}
+                onChange={this.onChangeBudget_line}
+                name="budget_line"
               />
-            </div>
+            </div>           
             <div class="col-md-12 text-center">
               <button onClick={this.saveElement} className="btn btn-success">
                 Create

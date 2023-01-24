@@ -25,8 +25,8 @@ class ElementDataService {
     return http.delete(`/elements`);
   }
 
-  findByTitle(title) {
-    return http.get(`/elements?title=${title}`);
+  findByUsername(username) {
+    return http.get(`/elements?username=${username}`);
   }
 }
 

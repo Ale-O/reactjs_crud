@@ -5,10 +5,11 @@ import { withRouter } from '../common/with-router';
 class Element extends Component {
   constructor(props) {
     super(props);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeField4 = this.onChangeField4.bind(this);
-    this.onChangeField5 = this.onChangeField5.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeRank = this.onChangeRank.bind(this);
+    this.onChangeAvailability_date = this.onChangeAvailability_date.bind(this);
+    this.onChangeEnd_date = this.onChangeEnd_date.bind(this);
+    this.onChangeBudget_line = this.onChangeBudget_line.bind(this);
     this.getElement = this.getElement.bind(this);
     this.updateActivated = this.updateActivated.bind(this);
     this.updateElement = this.updateElement.bind(this);
@@ -17,10 +18,11 @@ class Element extends Component {
     this.state = {
       currentElement: {
         id: null,
-        title: "",
-        description: "",
-        field4: "",
-        field5: "",
+        username: "",
+        rank: "",
+        availability_date: "",
+        end_date: "",
+        budget_line: "",
         published: false
       },
       message: ""
@@ -31,48 +33,59 @@ class Element extends Component {
     this.getElement(this.props.router.params.id);
   }
 
-  onChangeTitle(e) {
-    const title = e.target.value;
+  onChangeUsername(e) {
+    const username = e.target.value;
 
     this.setState(function(prevState) {
       return {
         currentElement: {
           ...prevState.currentElement,
-          title: title
+          username: username
         }
       };
     });
   }
 
-  onChangeDescription(e) {
-    const description = e.target.value;
+  onChangeRank(e) {
+    const rank = e.target.value;
     
     this.setState(prevState => ({
       currentElement: {
         ...prevState.currentElement,
-        description: description
+        rank: rank
       }
     }));
   }
 
-  onChangeField4(e) {
-    const field4 = e.target.value;
+  onChangeAvailability_date(e) {
+    const availability_date = e.target.value;
     
     this.setState(prevState => ({
       currentElement: {
         ...prevState.currentElement,
-        field4: field4
+        availability_date: availability_date
       }
     }));
   }
 
-  onChangeField5(e) {
-    const field5 = e.target.value;
+  onChangeEnd_date(e) {
+    const end_date = e.target.value;
     
     this.setState(prevState => ({
       currentElement: {
         ...prevState.currentElement,
-        field5: field5
+        end_date: end_date
+      }
+    }));
+  }
+
+  onChangeBudget_line(e) {
+    const budget_line = e.target.value;
+    
+    this.setState(prevState => ({
+      currentElement: {
+        ...prevState.currentElement,
+        budget_line: budget_line
       }
     }));
   }
@@ -93,11 +106,12 @@ class Element extends Component {
   updateActivated(status) {
     var data = {
       id: this.state.currentElement.id,
-      title: this.state.currentElement.title,
-      description: this.state.currentElement.description,
+      username: this.state.currentElement.username,
+      rank: this.state.currentElement.rank,
       published: status,
-      field4: this.state.currentElement.field4,
-      field5: this.state.currentElement.field5
+      availability_date: this.state.currentElement.availability_date,
+      end_date: this.state.currentElement.end_date,
+      budget_line: this.state.currentElement.budget_line
     };
 
     ElementDataService.update(this.state.currentElement.id, data)
@@ -154,46 +168,55 @@ class Element extends Component {
             <hr></hr>
             <form>
               <div className="form-group">
-                <label htmlFor="title">Title</label>
+                <label htmlFor="username">Username</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="title"
-                  value={currentElement.title}
-                  onChange={this.onChangeTitle}
+                  id="username"
+                  value={currentElement.username}
+                  onChange={this.onChangeUsername}
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="description">Description</label>
+                <label htmlFor="rank">Rank</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="description"
-                  value={currentElement.description}
-                  onChange={this.onChangeDescription}
+                  id="rank"
+                  value={currentElement.rank}
+                  onChange={this.onChangeRank}
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="field4">Field4</label>
+                <label htmlFor="availability_date">Availability_date</label>
                 <input
-                  type="text"
+                  type="date"
                   className="form-control"
-                  id="field4"
-                  value={currentElement.field4}
-                  onChange={this.onChangeField4}
+                  id="availability_date"
+                  value={currentElement.availability_date}
+                  onChange={this.onChangeAvailability_date}
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="field5">Field5</label>
+                <label htmlFor="end_date">End_date</label>
+                <input
+                  type="date"
+                  className="form-control"
+                  id="end_date"
+                  value={currentElement.end_date}
+                  onChange={this.onChangeEnd_date}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="budget_line">Budget_line</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="field5"
-                  value={currentElement.field5}
-                  onChange={this.onChangeField5}
+                  id="budget_line"
+                  value={currentElement.budget_line}
+                  onChange={this.onChangeBudget_line}
                 />
               </div>
-              
 
               <div className="form-group">
                 <label>

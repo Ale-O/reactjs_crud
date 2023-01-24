@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 export default class ElementsList extends Component {
   constructor(props) {
     super(props);
-    this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
+    this.onChangeSearchUsername = this.onChangeSearchUsername.bind(this);
     this.retrieveElements = this.retrieveElements.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveElement = this.setActiveElement.bind(this);
     this.removeAllElements = this.removeAllElements.bind(this);
-    this.searchTitle = this.searchTitle.bind(this);
+    this.searchUsername = this.searchUsername.bind(this);
 
     this.state = {
       elements: [],
       currentElement: null,
       currentIndex: -1,
-      searchTitle: ""
+      searchUsername: ""
     };
   }
 
@@ -24,11 +24,11 @@ export default class ElementsList extends Component {
     this.retrieveElements();
   }
 
-  onChangeSearchTitle(e) {
-    const searchTitle = e.target.value;
+  onChangeSearchUsername(e) {
+    const searchUsername = e.target.value;
 
     this.setState({
-      searchTitle: searchTitle
+      searchUsername: searchUsername
     });
   }
 
@@ -71,13 +71,13 @@ export default class ElementsList extends Component {
       });
   }
 
-  searchTitle() {
+  searchUsername() {
     this.setState({
       currentElement: null,
       currentIndex: -1
     });
 
-    ElementDataService.findByTitle(this.state.searchTitle)
+    ElementDataService.findByUsername(this.state.searchUsername)
       .then(response => {
         this.setState({
           elements: response.data
@@ -90,7 +90,7 @@ export default class ElementsList extends Component {
   }
 
   render() {
-    const { searchTitle, elements, currentElement, currentIndex } = this.state;
+    const { searchUsername, elements, currentElement, currentIndex } = this.state;
 
     return (
       <div className="list row">
@@ -103,7 +103,7 @@ export default class ElementsList extends Component {
                 <button
                   className="btn btn-outline-secondary"
                   type="button"
-                  onClick={this.searchTitle}
+                  onClick={this.searchUsername}
                 >
                   Search
                 </button>
@@ -111,9 +111,9 @@ export default class ElementsList extends Component {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Find element by title"
-                value={searchTitle}
-                onChange={this.onChangeSearchTitle}
+                placeholder="Find element by username"
+                value={searchUsername}
+                onChange={this.onChangeSearchUsername}
               />
             </div>
           </div>
@@ -131,7 +131,7 @@ export default class ElementsList extends Component {
                   onClick={() => this.setActiveElement(element, index)}
                   key={index}
                 >
-                  {element.title}
+                  {element.username}
                 </li>
               ))}
           </ul>
@@ -155,27 +155,33 @@ export default class ElementsList extends Component {
               <div>
                 <div>
                   <label>
-                    <strong>Title:</strong>
+                    <strong>Username:</strong>
                   </label>{" "}
-                  {currentElement.title}
+                  {currentElement.username}
                 </div>
                 <div>
                   <label>
-                    <strong>Description:</strong>
+                    <strong>Rank:</strong>
                   </label>{" "}
-                  {currentElement.description}
+                  {currentElement.rank}
                 </div>
                 <div>
                   <label>
-                    <strong>Field4:</strong>
+                    <strong>Availability_date:</strong>
                   </label>{" "}
-                  {currentElement.field4}
+                  {currentElement.availability_date}
                 </div>
                 <div>
                   <label>
-                    <strong>Field5:</strong>
+                    <strong>End_date:</strong>
                   </label>{" "}
-                  {currentElement.field5}
+                  {currentElement.end_date}
+                </div>
+                <div>
+                  <label>
+                    <strong>Budget_line:</strong>
+                  </label>{" "}
+                  {currentElement.budget_line}
                 </div>
                 <div>
                   <label>
