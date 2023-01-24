@@ -23,7 +23,7 @@ class Element extends Component {
         availability_date: "",
         end_date: "",
         budget_line: "",
-        published: false
+        activated: false
       },
       message: ""
     };
@@ -108,7 +108,7 @@ class Element extends Component {
       id: this.state.currentElement.id,
       username: this.state.currentElement.username,
       rank: this.state.currentElement.rank,
-      published: status,
+      activated: status,
       availability_date: this.state.currentElement.availability_date,
       end_date: this.state.currentElement.end_date,
       budget_line: this.state.currentElement.budget_line
@@ -119,7 +119,7 @@ class Element extends Component {
         this.setState(prevState => ({
           currentElement: {
             ...prevState.currentElement,
-            published: status
+            activated: status
           }
         }));
         console.log(response.data);
@@ -222,11 +222,11 @@ class Element extends Component {
                 <label>
                   <strong>State : </strong>
                 </label>
-                {currentElement.published ? "Activated" : "Deactivated"}
+                {currentElement.activated ? "Activated" : "Deactivated"}
               </div>
             </form>
 
-            {currentElement.published ? (
+            {currentElement.activated ? (
               <button
                 className="m-2 btn btn-md btn-primary"
                 onClick={() => this.updateActivated(false)}

@@ -16,7 +16,7 @@ export default class CreateElement extends Component {
       id: null,
       username: "",
       rank: "", 
-      published: false,
+      activated: false,
       availability_date: "",
       end_date: "",
       budget_line: "",
@@ -73,7 +73,7 @@ export default class CreateElement extends Component {
           availability_date: response.data.availability_date,
           end_date: response.data.end_date,
           budget_line: response.data.budget_line,
-          published: response.data.published,
+          activated: response.data.activated,
 
           submitted: true
         });
@@ -92,7 +92,7 @@ export default class CreateElement extends Component {
       availability_date: "",
       end_date: "",
       budget_line: "",
-      published: false,
+      activated: false,
 
       submitted: false
     });

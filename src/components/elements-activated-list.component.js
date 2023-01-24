@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ElementDataService from "../services/element.service";
 import { Link } from "react-router-dom";
 
-export default class ElementsList extends Component {
+export default class ElementsActivatedList extends Component {
   constructor(props) {
     super(props);
     this.onChangeSearchUsername = this.onChangeSearchUsername.bind(this);
@@ -33,7 +33,7 @@ export default class ElementsList extends Component {
   }
 
   retrieveElements() {
-    ElementDataService.getAll()
+    ElementDataService.getAllActivated()
       .then(response => {
         this.setState({
           elements: response.data

@@ -5,6 +5,10 @@ class ElementDataService {
     return http.get("/elements");
   }
 
+  getAllActivated() {
+    return http.get("/elements/activated");
+  }
+
   get(id) {
     return http.get(`/elements/${id}`);
   }

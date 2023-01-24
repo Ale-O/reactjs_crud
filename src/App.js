@@ -6,6 +6,7 @@ import "./App.css";
 import CreateElement from "./components/add-element.component";
 import Element from "./components/element.component";
 import ElementsList from "./components/elements-list.component";
+import ElementsActivatedList from "./components/elements-activated-list.component";
 
 class App extends Component {
   render() {
@@ -17,12 +18,17 @@ class App extends Component {
           </Link>
           <div className="navbar-nav mr-auto">
           </div>
-          <span class="navbar-nav">
-            <li className="nav-item active">
+          <span class="navbar-nav">           
+              <li className="nav-item active">
                 <Link to={"/elements"} className="nav-link">
-                  Elements
+                  All Elements
                 </Link>
               </li>
+              <li className="nav-item active">
+                <Link to={"/elements/activated"} className="nav-link">
+                  Elements activated
+                </Link>
+              </li> 
               <li className="nav-item">
                 <Link to={"/add"} className="nav-link">
                   Create
@@ -35,6 +41,7 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<ElementsList/>} />
             <Route path="/elements" element={<ElementsList/>} />
+            <Route path="/elements/activated" element={<ElementsActivatedList/>} />
             <Route path="/add" element={<CreateElement/>} />
             <Route path="/elements/:id" element={<Element/>} />
           </Routes>
