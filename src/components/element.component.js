@@ -178,14 +178,14 @@ class Element extends Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="rank">Rank</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="rank"
-                  value={currentElement.rank}
-                  onChange={this.onChangeRank}
-                />
+                <label htmlFor="rank">
+                  Rank:
+                  <select className="form-control" id="rank" required value={currentElement.rank} onChange={this.onChangeRank} name="rank">
+                    <option selected value="no_rank">no rank</option>           
+                    <option value="rank_A">rank_A</option>
+                    <option value="rank_B">rank_B</option>
+                  </select>
+                </label>
               </div>
               <div className="form-group">
                 <label htmlFor="availability_date">Availability_date</label>
