@@ -119,29 +119,29 @@ export default class ElementsList extends Component {
           </div>
 
           <div className="col-md-12">
-          <h4 align='center'>Elements List</h4>
-          <ul className="list-group-item list-group-item-dark">
-            {elements &&
-              elements.map((element, index) => (
-                <li
-                  className={
-                    "list-group-item " +
-                    (index === currentIndex ? "active" : "")
-                  }
-                  onClick={() => this.setActiveElement(element, index)}
-                  key={index}
-                >
-                  {element.username}
-                </li>
-              ))}
-          </ul>
-          <button
-            className="m-3 btn btn-sm btn-danger"
-            onClick={this.removeAllElements}
-          >
-            Delete All
-          </button>
-        </div>
+            <h4 align='center'>Elements List</h4>
+            <ul className="list-group-item list-group-item-dark">
+              {elements &&
+                elements.map((element, index) => (
+                  <li
+                    className={
+                      "list-group-item " +
+                      (index === currentIndex ? "active" : "")
+                    }
+                    onClick={() => this.setActiveElement(element, index)}
+                    key={index}
+                  >
+                    {element.username}
+                  </li>
+                ))}
+            </ul>
+            <button
+              className="m-3 btn btn-sm btn-danger"
+              onClick={this.removeAllElements}
+            >
+              Delete All
+            </button>
+          </div>
 
         </div>
 
@@ -155,37 +155,37 @@ export default class ElementsList extends Component {
               <div>
                 <div>
                   <label>
-                    <strong>Username:</strong>
+                    <strong>Username : </strong>
                   </label>{" "}
                   {currentElement.username}
                 </div>
                 <div>
                   <label>
-                    <strong>Rank:</strong>
+                    <strong>Rank : </strong>
                   </label>{" "}
                   {currentElement.rank}
                 </div>
                 <div>
                   <label>
-                    <strong>Availability_date:</strong>
+                    <strong>Availability date : </strong>
                   </label>{" "}
                   {currentElement.availability_date}
                 </div>
                 <div>
                   <label>
-                    <strong>End_date:</strong>
+                    <strong>End date : </strong>
                   </label>{" "}
                   {currentElement.end_date}
                 </div>
                 <div>
                   <label>
-                    <strong>Budget_line:</strong>
+                    <strong>Budget line : </strong>
                   </label>{" "}
                   {currentElement.budget_line}
                 </div>
                 <div>
                   <label>
-                    <strong>State:</strong>
+                    <strong>State : </strong>
                   </label>{" "}
                   {currentElement.activated ? "Activated" : "Deactivated"}
                 </div>

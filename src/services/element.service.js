@@ -5,6 +5,10 @@ class ElementDataService {
     return http.get("/elements");
   }
 
+  getForecasts() {
+    return http.get("/elements/forecasts");
+  }
+
   getAllActivated() {
     return http.get("/elements/activated");
   }

@@ -179,7 +179,7 @@ class Element extends Component {
               </div>
               <div className="form-group">
                 <label htmlFor="rank">
-                  Rank:
+                  Rank : 
                   <select className="form-control" id="rank" required value={currentElement.rank} onChange={this.onChangeRank} name="rank">
                     <option selected value="no_rank">no rank</option>           
                     <option value="rank_A">rank_A</option>
@@ -188,7 +188,7 @@ class Element extends Component {
                 </label>
               </div>
               <div className="form-group">
-                <label htmlFor="availability_date">Availability_date</label>
+                <label htmlFor="availability_date">Availability date</label>
                 <input
                   type="date"
                   className="form-control"
@@ -198,7 +198,7 @@ class Element extends Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="end_date">End_date</label>
+                <label htmlFor="end_date">End date</label>
                 <input
                   type="date"
                   className="form-control"
@@ -208,7 +208,7 @@ class Element extends Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="budget_line">Budget_line</label>
+                <label htmlFor="budget_line">Budget line</label>
                 <input
                   type="text"
                   className="form-control"
